@@ -1,4 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
+// @ts-ignore - Compiled JS SSR bundle
 import server from "../dist/server/server.js";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -27,10 +28,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     body,
   });
 
-  const response = await server.fetch(request, {}, {});
+  const response = await (server as { fetch: (req: Request, env: unknown, ctx: unknown) => Promise<Response> }).fetch(request, {}, {});
 
   res.status(response.status);
-  response.headers.forEach((value, key) => {
+  response.headers.forEach((value: string, key: string) => {
     res.setHeader(key, value);
   });
 
