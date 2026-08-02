@@ -25,32 +25,32 @@ export function Contact() {
         </Reveal>
 
         <Reveal delay={120}>
-          <div className="relative mt-16 overflow-hidden rounded-3xl grad-border glass-strong p-8 md:p-12">
+          <div className="relative mt-16 overflow-hidden rounded-3xl grad-border glass-strong p-5 sm:p-8 md:p-12">
             <div className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-indigo-500/30 blur-3xl" />
             <div className="pointer-events-none absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-fuchsia-500/30 blur-3xl" />
 
-            <div className="relative grid gap-10 md:grid-cols-[1.1fr_1fr]">
-              <div>
-                <h3 className="font-display text-3xl md:text-4xl font-semibold text-white">Tejesh Chintada</h3>
-                <p className="mt-2 text-white/60">Open to Full-Stack, Backend, and SDE roles.</p>
+            <div className="relative grid gap-8 md:gap-10 md:grid-cols-[1.1fr_1fr] min-w-0">
+              <div className="min-w-0">
+                <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-semibold text-white">Tejesh Chintada</h3>
+                <p className="mt-2 text-sm sm:text-base text-white/60">Open to Full-Stack, Backend, and SDE roles.</p>
 
-                <div className="mt-8 space-y-3">
-                  <div className="flex items-center gap-3 rounded-xl glass px-4 py-3">
-                    <MapPin className="h-4 w-4 text-cyan-300" />
-                    <span className="text-white/80 text-sm">Visakhapatnam, India</span>
+                <div className="mt-6 sm:mt-8 space-y-3 min-w-0">
+                  <div className="flex items-center gap-3 rounded-xl glass px-3.5 sm:px-4 py-3 min-w-0">
+                    <MapPin className="h-4 w-4 text-cyan-300 flex-none" />
+                    <span className="text-white/80 text-xs sm:text-sm truncate">Visakhapatnam, India</span>
                   </div>
-                  <a href="tel:+918019889691" className="flex items-center gap-3 rounded-xl glass px-4 py-3 hover:bg-white/10 transition-colors">
-                    <Phone className="h-4 w-4 text-cyan-300" />
-                    <span className="text-white/80 text-sm">+91 80198 89691</span>
+                  <a href="tel:+918019889691" className="flex items-center gap-3 rounded-xl glass px-3.5 sm:px-4 py-3 hover:bg-white/10 transition-colors min-w-0">
+                    <Phone className="h-4 w-4 text-cyan-300 flex-none" />
+                    <span className="text-white/80 text-xs sm:text-sm truncate">+91 80198 89691</span>
                   </a>
-                  <div className="flex items-center justify-between gap-3 rounded-xl glass px-4 py-3">
+                  <div className="flex items-center justify-between gap-2 rounded-xl glass px-3.5 sm:px-4 py-3 min-w-0">
                     <a href={`mailto:${email}`} className="flex items-center gap-3 min-w-0">
                       <Mail className="h-4 w-4 text-cyan-300 flex-none" />
-                      <span className="text-white/80 text-sm truncate">{email}</span>
+                      <span className="text-white/80 text-xs sm:text-sm truncate">{email}</span>
                     </a>
                     <button
                       onClick={onCopy}
-                      className="grid h-8 w-8 place-items-center rounded-md bg-white/5 text-white/70 hover:text-white hover:bg-white/10"
+                      className="grid h-8 w-8 flex-none place-items-center rounded-md bg-white/5 text-white/70 hover:text-white hover:bg-white/10"
                       aria-label="Copy email"
                     >
                       {copied ? <Check className="h-4 w-4 text-emerald-400" /> : <Copy className="h-4 w-4" />}
@@ -58,7 +58,7 @@ export function Contact() {
                   </div>
                 </div>
 
-                <div className="mt-8 flex items-center gap-2">
+                <div className="mt-6 sm:mt-8 flex items-center gap-2 flex-wrap">
                   {SOCIALS.map((s) => {
                     const Icon = socialIcon[s.icon];
                     return (
@@ -77,17 +77,17 @@ export function Contact() {
                 </div>
               </div>
 
-              <div className="relative">
-                <div className="rounded-2xl bg-gradient-to-br from-indigo-500/30 via-fuchsia-500/20 to-cyan-400/30 p-[1px]">
-                  <div className="overflow-hidden rounded-2xl bg-[#0b0b12]">
-                    <div className="flex items-center gap-2 border-b border-white/10 bg-white/[0.04] px-4 py-3">
-                      <span className="h-2.5 w-2.5 rounded-full bg-red-400/70" />
-                      <span className="h-2.5 w-2.5 rounded-full bg-amber-400/70" />
-                      <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/70" />
-                      <span className="ml-2 font-mono text-[11px] tracking-wide text-white/50">preferred_contact.ts</span>
+              <div className="relative min-w-0">
+                <div className="rounded-2xl bg-gradient-to-br from-indigo-500/30 via-fuchsia-500/20 to-cyan-400/30 p-[1px] min-w-0">
+                  <div className="overflow-hidden rounded-2xl bg-[#0b0b12] min-w-0">
+                    <div className="flex items-center gap-2 border-b border-white/10 bg-white/[0.04] px-4 py-3 min-w-0">
+                      <span className="h-2.5 w-2.5 rounded-full bg-red-400/70 flex-none" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-amber-400/70 flex-none" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/70 flex-none" />
+                      <span className="ml-2 font-mono text-[11px] tracking-wide text-white/50 truncate">preferred_contact.ts</span>
                     </div>
-                    <div className="p-6">
-                    <pre className="overflow-x-auto font-mono text-[12.5px] leading-[1.9] text-white/80">
+                    <div className="p-4 sm:p-6 min-w-0">
+                    <pre className="overflow-x-auto font-mono text-[11px] sm:text-[12.5px] leading-[1.8] sm:leading-[1.9] text-white/80">
 <code>
 <span className="text-fuchsia-300">const</span> <span className="text-cyan-300">reach</span> <span className="text-white/50">=</span> {"{"}{"\n"}
 {"  "}<span className="text-indigo-300">email</span><span className="text-white/50">:</span> <span className="text-emerald-300">"{email}"</span><span className="text-white/50">,</span>{"\n"}
