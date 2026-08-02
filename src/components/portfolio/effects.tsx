@@ -3,6 +3,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 /* Cursor spotlight — follows mouse via CSS vars */
 export function CursorSpotlight() {
   useEffect(() => {
+    if (window.matchMedia("(pointer: coarse)").matches) return;
     const el = document.getElementById("cursor-spotlight");
     if (!el) return;
     const onMove = (e: MouseEvent) => {
@@ -12,7 +13,7 @@ export function CursorSpotlight() {
     window.addEventListener("mousemove", onMove);
     return () => window.removeEventListener("mousemove", onMove);
   }, []);
-  return <div id="cursor-spotlight" className="spotlight" aria-hidden />;
+  return <div id="cursor-spotlight" className="spotlight hidden md:block" aria-hidden />;
 }
 
 /* Cursor follower dot (hidden on touch) */
@@ -46,13 +47,16 @@ export function CursorFollower() {
 /* Aurora background */
 export function Aurora() {
   return (
-    <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden [transform:translateZ(0)] [backface-visibility:hidden]" aria-hidden>
+    <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden" aria-hidden>
       <div className="absolute inset-0 bg-[#09090b]" />
       <div className="absolute inset-0 bg-grid opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
-      <div className="absolute -top-40 -left-40 h-[600px] w-[600px] rounded-full bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.35),transparent_60%)] blur-3xl animate-aurora [transform:translateZ(0)]" />
-      <div className="absolute top-1/3 -right-40 h-[700px] w-[700px] rounded-full bg-[radial-gradient(circle_at_center,rgba(167,139,250,0.28),transparent_60%)] blur-3xl animate-aurora [transform:translateZ(0)]" style={{ animationDelay: "-6s" }} />
-      <div className="absolute bottom-0 left-1/3 h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_at_center,rgba(103,232,249,0.22),transparent_60%)] blur-3xl animate-aurora [transform:translateZ(0)]" style={{ animationDelay: "-12s" }} />
-      <div className="absolute inset-0 bg-noise opacity-[0.35] mix-blend-overlay" />
+      {/* Mobile-optimized static glow (0 GPU animation overhead) */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(99,102,241,0.2),transparent_60%),radial-gradient(circle_at_80%_60%,rgba(167,139,250,0.18),transparent_60%)] md:hidden" />
+      {/* Desktop animated aurora */}
+      <div className="hidden md:block absolute -top-40 -left-40 h-[600px] w-[600px] rounded-full bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.35),transparent_60%)] blur-3xl animate-aurora" />
+      <div className="hidden md:block absolute top-1/3 -right-40 h-[700px] w-[700px] rounded-full bg-[radial-gradient(circle_at_center,rgba(167,139,250,0.28),transparent_60%)] blur-3xl animate-aurora" style={{ animationDelay: "-6s" }} />
+      <div className="hidden md:block absolute bottom-0 left-1/3 h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_at_center,rgba(103,232,249,0.22),transparent_60%)] blur-3xl animate-aurora" style={{ animationDelay: "-12s" }} />
+      <div className="hidden md:block absolute inset-0 bg-noise opacity-[0.35] mix-blend-overlay" />
     </div>
   );
 }
@@ -61,7 +65,7 @@ export function Aurora() {
 export function Particles({ count = 24 }: { count?: number }) {
   const items = Array.from({ length: count });
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
+    <div className="pointer-events-none absolute inset-0 overflow-hidden hidden sm:block" aria-hidden>
       {items.map((_, i) => {
         const left = (i * 37) % 100;
         const size = 2 + ((i * 13) % 4);
@@ -121,10 +125,13 @@ export function Reveal({ children, delay = 0, className = "" }: { children: Reac
         if (e.isIntersecting) {
           el.style.transitionDelay = `${delay}ms`;
           el.classList.add("in-view");
+          setTimeout(() => {
+            if (el) el.classList.add("revealed");
+          }, delay + 950);
           io.disconnect();
         }
       },
-      { threshold: 0.12 }
+      { threshold: 0.08 }
     );
     io.observe(el);
     return () => io.disconnect();
