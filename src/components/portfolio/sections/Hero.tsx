@@ -122,7 +122,7 @@ function ResumeButton() {
 export function Hero() {
   return (
     <section id="home" className="relative min-h-[100svh] overflow-hidden pt-32 pb-24">
-      <Particles count={28} />
+      <Particles count={64} />
 
       <div className="relative mx-auto max-w-6xl px-6">
         <div className="mx-auto max-w-4xl text-center">

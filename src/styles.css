@@ -141,34 +141,40 @@
 }
 
 @utility glass {
-  background: rgba(18, 18, 26, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(
+    140deg,
+    color-mix(in oklab, white 6%, transparent),
+    color-mix(in oklab, white 2%, transparent)
+  );
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid color-mix(in oklab, white 8%, transparent);
 }
 
 @utility glass-strong {
-  background: rgba(18, 18, 26, 0.92);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(
+    140deg,
+    color-mix(in oklab, white 9%, transparent),
+    color-mix(in oklab, white 3%, transparent)
+  );
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid color-mix(in oklab, white 10%, transparent);
 }
 
-@media (min-width: 768px) {
-  .glass {
-    background: linear-gradient(
-      140deg,
-      color-mix(in oklab, white 6%, transparent),
-      color-mix(in oklab, white 2%, transparent)
-    );
-    -webkit-backdrop-filter: blur(18px) saturate(140%);
-    backdrop-filter: blur(18px) saturate(140%);
-  }
-
-  .glass-strong {
-    background: linear-gradient(
-      140deg,
-      color-mix(in oklab, white 9%, transparent),
-      color-mix(in oklab, white 3%, transparent)
-    );
-    -webkit-backdrop-filter: blur(24px) saturate(160%);
-    backdrop-filter: blur(24px) saturate(160%);
+/* iOS WebKit layer memory protection fallback */
+@supports (-webkit-touch-callout: none) {
+  @media (max-width: 768px) {
+    .glass {
+      background: rgba(18, 18, 26, 0.85) !important;
+      -webkit-backdrop-filter: none !important;
+      backdrop-filter: none !important;
+    }
+    .glass-strong {
+      background: rgba(18, 18, 26, 0.95) !important;
+      -webkit-backdrop-filter: none !important;
+      backdrop-filter: none !important;
+    }
   }
 }
 
@@ -255,11 +261,13 @@
 }
 .reveal.in-view { opacity: 1; transform: translateY(0); }
 
-@media (max-width: 768px), (pointer: coarse) {
-  .reveal {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
+@supports (-webkit-touch-callout: none) {
+  @media (max-width: 768px) {
+    .reveal {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
   }
 }
 

@@ -62,27 +62,38 @@ export function Aurora() {
 }
 
 /* Floating particles */
-export function Particles({ count = 24 }: { count?: number }) {
+export function Particles({ count = 56 }: { count?: number }) {
+  const [skip, setSkip] = useState(false);
+
+  useEffect(() => {
+    const isIOSDevice =
+      /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+      (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    if (isIOSDevice) setSkip(true);
+  }, []);
+
+  if (skip) return null;
+
   const items = Array.from({ length: count });
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden hidden sm:block" aria-hidden>
+    <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
       {items.map((_, i) => {
-        const left = (i * 37) % 100;
-        const size = 2 + ((i * 13) % 4);
-        const delay = (i * 0.9) % 12;
-        const dur = 18 + ((i * 7) % 20);
+        const left = ((i * 17) + 3) % 100;
+        const size = 1.5 + ((i * 7) % 4.5);
+        const delay = (i * 0.4) % 14;
+        const dur = 14 + ((i * 11) % 18);
         return (
           <span
             key={i}
-            className="absolute rounded-full bg-white/50"
+            className="absolute rounded-full bg-white/60"
             style={{
               left: `${left}%`,
               bottom: `-10px`,
               width: size,
               height: size,
-              filter: "blur(0.5px)",
+              filter: "blur(0.4px)",
               animation: `particle ${dur}s linear ${delay}s infinite`,
-              boxShadow: "0 0 8px rgba(167,139,250,0.6)",
+              boxShadow: "0 0 10px rgba(167,139,250,0.7)",
             }}
           />
         );
