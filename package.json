@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build && nitro build --preset vercel",
+    "build": "vite build",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
@@ -70,6 +70,7 @@
     "@types/node": "^22.16.5",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
+    "@vercel/node": "^5.9.3",
     "@vitejs/plugin-react": "^5.2.0",
     "enhanced-resolve": "^5.24.5",
     "eslint": "^9.32.0",
