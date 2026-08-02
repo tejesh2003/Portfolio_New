@@ -139,9 +139,9 @@ export const PROJECTS = [
 
 export const ACHIEVEMENTS = [
   { value: 700, suffix: "+", label: "Problems Solved" },
-  { value: 20, suffix: "+", label: "REST APIs Developed" },
-  { value: 40, suffix: "+", label: "UI Bugs Fixed" },
-  { value: 7, suffix: "+", label: "Microservices Contributed" },
+  { value: 5, suffix: "+", label: "Direct Client Management" },
+  { value: 40, suffix: "+", label: "Shipped Production features" },
+  { value: 2496, suffix: "", label: "JEE Advanced Rank" },
   { value: 5, suffix: "★", label: "HackerRank C++" },
   { value: 480, suffix: "th", label: "CodeChef Div 2 · Starters 113" },
 ];

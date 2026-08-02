@@ -19,7 +19,7 @@ export function Achievements() {
                   <div className="pointer-events-none absolute -top-16 -right-16 h-40 w-40 rounded-full bg-gradient-to-br from-indigo-500/40 to-fuchsia-500/40 blur-2xl" />
                   <div className="relative">
                     <div className="font-display text-5xl md:text-6xl font-semibold text-gradient">
-                      <Counter to={a.value} suffix={a.suffix} />
+                      <Counter to={a.value} suffix={a.suffix} prefix={a.prefix} />
                     </div>
                     <div className="mt-3 text-sm text-white/70">{a.label}</div>
                   </div>

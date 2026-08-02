@@ -168,7 +168,7 @@ export function LoadingScreen() {
 export function ScrollTop() {
   const [show, setShow] = useState(false);
   useEffect(() => {
-    const onScroll = () => setShow(window.scrollY > 800);
+    const onScroll = () => setShow(window.scrollY > 500);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -177,7 +177,7 @@ export function ScrollTop() {
     <button
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       aria-label="Scroll to top"
-      className="fixed bottom-6 right-6 z-50 grid h-12 w-12 place-items-center rounded-full grad-border glass-strong text-white shadow-[0_10px_40px_-10px_rgba(99,102,241,0.6)] transition-transform hover:-translate-y-1"
+      className="fixed bottom-4 right-0 sm:bottom-6 sm:right-1 z-[90] grid h-10 w-10 sm:h-11 sm:w-11 place-items-center rounded-full grad-border glass-strong text-white shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-transform hover:-translate-y-1"
     >
       <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5"><path d="M12 19V5m0 0-6 6m6-6 6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
     </button>
@@ -227,7 +227,7 @@ export function Tilt({ children, className = "" }: { children: ReactNode; classN
 }
 
 /* Animated counter */
-export function Counter({ to, suffix = "", duration = 1500 }: { to: number; suffix?: string; duration?: number }) {
+export function Counter({ to, suffix = "", prefix = "", duration = 1500 }: { to: number; suffix?: string; prefix?: string; duration?: number }) {
   const ref = useRef<HTMLSpanElement>(null);
   const [val, setVal] = useState(0);
   useEffect(() => {
@@ -248,7 +248,7 @@ export function Counter({ to, suffix = "", duration = 1500 }: { to: number; suff
     io.observe(el);
     return () => io.disconnect();
   }, [to, duration]);
-  return <span ref={ref}>{val}{suffix}</span>;
+  return <span ref={ref}>{prefix}{val}{suffix}</span>;
 }
 
 /* Typewriter */

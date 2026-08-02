@@ -205,15 +205,7 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-6 flex justify-center">
-          <div className="flex flex-col items-center gap-2 text-white/40">
-            <span className="font-mono text-[10px] uppercase tracking-[0.3em]">Scroll</span>
-            <span className="relative h-8 w-[2px] overflow-hidden rounded-full bg-white/10">
-              <span className="absolute inset-x-0 top-0 h-3 bg-gradient-to-b from-cyan-400 to-transparent animate-[particle_2s_linear_infinite]" style={{ animation: "shimmer 2s linear infinite", backgroundSize: "100% 300%" }} />
-            </span>
-          </div>
-        </div>
+
       </div>
     </section>
   );
