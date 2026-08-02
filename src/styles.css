@@ -146,8 +146,11 @@
     color-mix(in oklab, white 6%, transparent),
     color-mix(in oklab, white 2%, transparent)
   );
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
   backdrop-filter: blur(18px) saturate(140%);
   border: 1px solid color-mix(in oklab, white 8%, transparent);
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 @utility glass-strong {
@@ -156,8 +159,11 @@
     color-mix(in oklab, white 9%, transparent),
     color-mix(in oklab, white 3%, transparent)
   );
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
   backdrop-filter: blur(24px) saturate(160%);
   border: 1px solid color-mix(in oklab, white 10%, transparent);
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 @utility gradient-border {
@@ -223,7 +229,12 @@
   100% { transform: translateY(-120vh) translateX(40px); opacity: 0; }
 }
 
-.animate-aurora { animation: aurora 20s ease-in-out infinite; }
+.animate-aurora {
+  animation: aurora 20s ease-in-out infinite;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
+}
 .animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
 .animate-gradient { background-size: 200% 200%; animation: gradient-shift 8s ease infinite; }
 .animate-fade-up { animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
@@ -231,7 +242,13 @@
 .animate-blink { animation: blink 1s step-end infinite; }
 .animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
 
-.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1); }
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
 .reveal.in-view { opacity: 1; transform: translateY(0); }
 
 /* Magnetic / hover helpers */

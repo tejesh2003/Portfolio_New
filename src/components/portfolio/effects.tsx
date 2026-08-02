@@ -46,12 +46,12 @@ export function CursorFollower() {
 /* Aurora background */
 export function Aurora() {
   return (
-    <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden" aria-hidden>
+    <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden [transform:translateZ(0)] [backface-visibility:hidden]" aria-hidden>
       <div className="absolute inset-0 bg-[#09090b]" />
       <div className="absolute inset-0 bg-grid opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
-      <div className="absolute -top-40 -left-40 h-[600px] w-[600px] rounded-full bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.35),transparent_60%)] blur-3xl animate-aurora" />
-      <div className="absolute top-1/3 -right-40 h-[700px] w-[700px] rounded-full bg-[radial-gradient(circle_at_center,rgba(167,139,250,0.28),transparent_60%)] blur-3xl animate-aurora" style={{ animationDelay: "-6s" }} />
-      <div className="absolute bottom-0 left-1/3 h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_at_center,rgba(103,232,249,0.22),transparent_60%)] blur-3xl animate-aurora" style={{ animationDelay: "-12s" }} />
+      <div className="absolute -top-40 -left-40 h-[600px] w-[600px] rounded-full bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.35),transparent_60%)] blur-3xl animate-aurora [transform:translateZ(0)]" />
+      <div className="absolute top-1/3 -right-40 h-[700px] w-[700px] rounded-full bg-[radial-gradient(circle_at_center,rgba(167,139,250,0.28),transparent_60%)] blur-3xl animate-aurora [transform:translateZ(0)]" style={{ animationDelay: "-6s" }} />
+      <div className="absolute bottom-0 left-1/3 h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_at_center,rgba(103,232,249,0.22),transparent_60%)] blur-3xl animate-aurora [transform:translateZ(0)]" style={{ animationDelay: "-12s" }} />
       <div className="absolute inset-0 bg-noise opacity-[0.35] mix-blend-overlay" />
     </div>
   );
